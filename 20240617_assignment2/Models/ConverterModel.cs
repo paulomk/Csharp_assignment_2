@@ -4,11 +4,11 @@ namespace _20240617_assignment2.Models
 {
     public class ConverterModel
     {
-        [Required(ErrorMessage ="No informed")]
+        [Required(ErrorMessage ="Enter an amount")]
         public decimal? Amount { get; set; }
         public decimal Rate { get; set; } = 1.10M;
 
-        [Required(ErrorMessage = "not informed")]
+        [Required(ErrorMessage = "Select one currency")]
          public string? ConversionType {  get; set; }
 
         public decimal ConvertAmount()

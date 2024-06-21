@@ -7,16 +7,25 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/_20240617_assignment2.styles.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <style>
+        nav{
+            background-color: blueviolet;
+        }
+        nav li a{
+            color:white !important
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="nav">
+        <nav class="navbar navbar-expand-md">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a asp-area="" asp-controller="Home" asp-action="Calculator">Calculator</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Calculator">Calculator</a>
                 </li>
                 <li class="nav-item">
-                    <a asp-area="" asp-controller="Home" asp-action="CurrencyConverter">Currency Converter</a>
+                    <a class="nav-link"  asp-controller="Home" asp-action="CurrencyConverter">Currency Converter</a>
                 </li>
             </ul>
         </nav>
