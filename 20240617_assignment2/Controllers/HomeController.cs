@@ -39,9 +39,39 @@ namespace _20240617_assignment2.Controllers
             return View();
         }
 
-        public IActionResult Calculator()
-        {
+        [HttpGet]
+        public IActionResult Calculator() 
+        { 
+            ViewBag.Result = 0;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Calculator(CalculatorModel model, string CalculationType)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CalculationType.Equals("PV"))
+                {
+                    double temp = model.CalculateAnnuityPresentValue();
+                    ViewBag.Result = (decimal)model.CalculateAnnuityPresentValue();
+                }
+                else if (CalculationType.Equals("FV"))
+                {
+                    double temp = model.CalculateAnnuityFutureValue();
+                    ViewBag.Result = (decimal)model.CalculateAnnuityFutureValue();
+                }
+                else
+                {
+                    ViewBag.Result = 0; //deal with wrong input
+                }
+            }
+            else
+            {
+                ViewBag.Result = 0; //deal with invalid state
+            }
+
+            return View(model);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

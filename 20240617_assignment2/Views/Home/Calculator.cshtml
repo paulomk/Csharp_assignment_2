@@ -1,0 +1,46 @@
+﻿@model CalculatorModel
+
+    <div class="container">
+    <h1 class="display-4 mb-5">Calculator <i class="fa-solid fa-hand-holding-dollar"></i> </h1>
+
+        <form asp-action="Calculator" method="post">
+            <p class="mt-3">Enter the Information below</p>
+            <div class="form-floating mb-3">
+                <input type="number" asp-for="Amount" step="0.01" class="form-control" />
+                <label asp-for="Amount" class="form-label">Monthly Amount: </label>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" asp-for="InterestRatePerYear" step="0.01" class="form-control" />
+                <label asp-for="InterestRatePerYear" class="form-label">Yearly Interest Rate (%): </label>
+                <span asp-validation-for="InterestRatePerYear" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" asp-for="PeriodsInMonth" class="form-control" />
+                <label asp-for="PeriodsInMonth" class="form-label">Periods in Months: </label>
+                <span asp-validation-for="PeriodsInMonth" class="text-danger"></span>
+            </div>
+            <p class="mt-3">Select the Type of Calculation </p>
+            <div class="row px-5 mb-3">
+                <div class="form-check col-md">
+                    <input type="radio" name="CalculationType" id="PV" value="PV" class="form-check-input"/>
+                    <label for="PV" class="form-check-label" >Present Value (PV)</label>
+                </div>
+                <div class="form-check col-md">
+                    <input type="radio" name="CalculationType" id="FV" value="FV" class="form-check-input" />
+                    <label for="FV" class="form-check-label">Future Value (FV)</label>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="result" value="@ViewBag.Result?.ToString("c2")" readonly class="form-control"> <!--Acessing the value only if it exists-->
+                <label for="result" class="form-label">Final value: </label>
+            </div>
+
+            <input type="submit" class="btn btn-primary mt-3" />
+
+        </form>
+
+    </div>
